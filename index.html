@@ -543,8 +543,8 @@
 
       pacheon: Array.from({ length: 12 }, (_, i) => ({
         title: `제${i + 1}권`,
-        subtitle: "",
-        pdf: ""
+        subtitle: i === 0 ? "무너진 다리" : "",
+        pdf: i === 0 ? "books/pacheon-01.pdf" : ""
       }))
     };
 
