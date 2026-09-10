@@ -430,20 +430,7 @@
             PDF 다운로드 항목을 추가할 수 있도록 홈페이지를 구성했습니다.
           </p>
 
-          <div class="future-grid" id="future-works">
-            <div class="future-card">
-              <strong>새 장편 소설</strong>
-              <span>작품 준비 중 · 추후 추가</span>
-            </div>
-            <div class="future-card">
-              <strong>새 단편 소설</strong>
-              <span>작품 준비 중 · 추후 추가</span>
-            </div>
-            <div class="future-card">
-              <strong>새로운 세계관</strong>
-              <span>작품 준비 중 · 추후 추가</span>
-            </div>
-          </div>
+          <div class="future-grid" id="future-works"></div>
         </div>
       </section>
 
@@ -731,8 +718,42 @@
       현재는 준비 중 카드만 표시합니다.
       ============================================================
     */
-    const futureWorks = [];
+    const futureWorks = [
+  {
+    title: "새 장편 소설",
+    status: "작품 준비 중 · 추후 추가"
+  },
+  {
+    title: "새 단편 소설",
+    status: "작품 준비 중 · 추후 추가"
+  },
+  {
+    title: "새로운 세계관",
+    status: "작품 준비 중 · 추후 추가"
+  }
+];
+function renderFutureWorks() {
+  const container = document.getElementById("future-works");
+  if (!container) return;
 
+  container.replaceChildren();
+
+  for (const work of futureWorks) {
+    const card = document.createElement("div");
+    card.className = "future-card";
+
+    const title = document.createElement("strong");
+    title.textContent = work.title;
+
+    const status = document.createElement("span");
+    status.textContent = work.status;
+
+    card.append(title, status);
+    container.append(card);
+  }
+}
+
+renderFutureWorks();
     function renderVolumes(elementId, volumes, workName) {
       const container = document.getElementById(elementId);
       if (!container) return;
