@@ -855,22 +855,31 @@ renderFutureWorks();
         container.append(card);
       }
     }
+    const workCatalog = [
+      {
+        containerId: "soma-volumes",
+        volumes: library.soma,
+        workName: "소마신화전기 — 가상 창작본"
+      },
+      {
+        containerId: "pacheon-volumes",
+        volumes: library.pacheon,
+        workName: "파천왕전"
+      }
+    ];
 
-    renderVolumes(
-      "soma-volumes",
-      library.soma,
-      "소마신화전기 — 가상 창작본"
-    );
-
-    renderVolumes(
-      "pacheon-volumes",
-      library.pacheon,
-      "파천왕전"
-    );
-
+    for (const work of workCatalog) {
+      renderVolumes(
+        work.containerId,
+        work.volumes,
+        work.workName
+      );
+    }
     const connectedCount =
-      [...library.soma, ...library.pacheon]
-        .filter(volume => volume.pdf).length;
+      workCatalog
+        .flatMap(work => work.volumes)
+        .filter(volume => volume.pdf)
+        .length;
 
     document.getElementById("download-status").textContent =
       connectedCount
