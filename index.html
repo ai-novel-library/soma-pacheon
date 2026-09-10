@@ -94,6 +94,31 @@
       border-radius:var(--radius);
       padding:28px;background:rgba(255,255,255,.06)
     }
+    .hero-covers{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-bottom:20px;
+    }
+
+    .hero-covers a{
+      display:block;
+      overflow:hidden;
+      border-radius:10px;
+    }
+
+    .hero-covers img{
+      width:100%;
+      aspect-ratio:2 / 3;
+      object-fit:cover;
+      display:block;
+      transition:transform .25s ease, filter .25s ease;
+    }
+
+    .hero-covers a:hover img{
+      transform:scale(1.03);
+      filter:brightness(1.05);
+    }
     .hero-card h2{font-size:22px;margin-bottom:10px}
     .hero-card p{color:#d8deea;font-size:14px}
     .hero-card ul{margin:0;padding-left:20px;color:#f1eee8;font-size:14px}
@@ -309,6 +334,16 @@
         </div>
 
         <aside class="hero-card" aria-label="사이트 안내">
+          
+          <div class="hero-covers">
+            <a href="#soma-list" aria-label="소마신화전기 가상 권별 자료 보기">
+              <img src="images/cover-soma-main.png" alt="소마신화전기_가상 대표 표지">
+            </a>
+            <a href="#pacheon-list" aria-label="파천왕전 권별 자료 보기">
+              <img src="images/cover-pacheon-main.png" alt="파천왕전 대표 표지">
+            </a>
+          </div>
+          
           <h2>이 사이트에서 만날 수 있는 것</h2>
           <ul>
             <li>《소마신화전기_가상》과 《파천왕전》의 권별 작품</li>
