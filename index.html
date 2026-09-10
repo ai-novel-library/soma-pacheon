@@ -219,7 +219,20 @@
     }
     .future-card strong{display:block;margin-bottom:8px}
     .future-card span{color:var(--muted);font-size:13px}
+    
+    .future-cover{
+      width:100%;
+      aspect-ratio:2 / 3;
+      object-fit:cover;
+      display:block;
+      border-radius:8px;
+      margin-bottom:14px;
+    }
 
+    .future-link{
+      margin-top:14px;
+    }
+    
     .download-group{
       padding:28px;margin-bottom:20px;border:1px solid var(--line);
       border-radius:var(--radius);background:var(--paper)
@@ -719,19 +732,26 @@
       ============================================================
     */
     const futureWorks = [
-  {
-    title: "새 장편 소설",
-    status: "작품 준비 중 · 추후 추가"
-  },
-  {
-    title: "새 단편 소설",
-    status: "작품 준비 중 · 추후 추가"
-  },
-  {
-    title: "새로운 세계관",
-    status: "작품 준비 중 · 추후 추가"
-  }
-];
+      {
+        title: "새 장편 소설",
+        status: "작품 준비 중 · 추후 추가",
+        cover: "",
+        href: ""
+      },
+      {
+        title: "새 단편 소설",
+        status: "작품 준비 중 · 추후 추가",
+        cover: "",
+        href: ""
+      },
+      {
+        title: "새로운 세계관",
+        status: "작품 준비 중 · 추후 추가",
+        cover: "",
+        href: ""
+      }
+    ];
+    
 function renderFutureWorks() {
   const container = document.getElementById("future-works");
   if (!container) return;
@@ -739,8 +759,16 @@ function renderFutureWorks() {
   container.replaceChildren();
 
   for (const work of futureWorks) {
-    const card = document.createElement("div");
+    const card = document.createElement("article");
     card.className = "future-card";
+
+    if (work.cover) {
+      const image = document.createElement("img");
+      image.className = "future-cover";
+      image.src = work.cover;
+      image.alt = `${work.title} 대표 표지`;
+      card.append(image);
+    }
 
     const title = document.createElement("strong");
     title.textContent = work.title;
@@ -749,6 +777,15 @@ function renderFutureWorks() {
     status.textContent = work.status;
 
     card.append(title, status);
+
+    if (work.href) {
+      const link = document.createElement("a");
+      link.className = "btn future-link";
+      link.href = work.href;
+      link.textContent = "작품 보기";
+      card.append(link);
+    }
+
     container.append(card);
   }
 }
