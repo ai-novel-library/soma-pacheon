@@ -142,6 +142,14 @@
     .cover.pacheon{background:
       linear-gradient(145deg,rgba(255,255,255,.04),transparent 60%),#3a3048
     }
+    
+    .cover-img{
+      width:100%;
+      aspect-ratio:2 / 3;
+      object-fit:cover;
+      display:block;
+    }
+    
     .cover small{letter-spacing:.2em;font-weight:800;color:#dfc58d}
     .cover strong{
       margin:14px 0 8px;font-family:"Batang","Nanum Myeongjo",serif;
@@ -319,11 +327,7 @@
 
         <div class="works">
           <article class="work">
-            <div class="cover" aria-hidden="true">
-              <small>비공식 AI 가상 창작</small>
-              <strong>소마<br>신화전기</strong>
-              <span>가상 창작본</span>
-            </div>
+            <img class="cover-img" src="images/cover-soma-main.png" alt="소마신화전기_가상 대표 표지">
             <div class="work-body">
               <span class="tag">대표 작품</span>
               <h3>소마신화전기_가상</h3>
@@ -337,11 +341,7 @@
           </article>
 
           <article class="work">
-            <div class="cover pacheon" aria-hidden="true">
-              <small>비공식 AI 가상 창작</small>
-              <strong>파천왕전</strong>
-              <span>삼계의 균열</span>
-            </div>
+            <img class="cover-img" src="images/cover-pacheon-main.png" alt="파천왕전 대표 표지">
             <div class="work-body">
               <span class="tag">대표 작품</span>
               <h3>파천왕전 — 삼계의 균열</h3>
