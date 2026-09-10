@@ -149,6 +149,20 @@
       object-fit:cover;
       display:block;
     }
+    .cover-link{
+      display:block;
+      overflow:hidden;
+      text-decoration:none;
+    }
+
+    .cover-link .cover-img{
+      transition:transform .25s ease, filter .25s ease;
+    }
+
+    .cover-link:hover .cover-img{
+      transform:scale(1.025);
+      filter:brightness(1.04);
+    }
     
     .cover small{letter-spacing:.2em;font-weight:800;color:#dfc58d}
     .cover strong{
@@ -327,7 +341,9 @@
 
         <div class="works">
           <article class="work">
-            <img class="cover-img" src="images/cover-soma-main.png" alt="소마신화전기_가상 대표 표지">
+            <a href="#soma-list" class="cover-link" aria-label="소마신화전기 가상 권별 자료 보기">
+              <img class="cover-img" src="images/cover-soma-main.png" alt="소마신화전기_가상 대표 표지">
+            </a>
             <div class="work-body">
               <span class="tag">대표 작품</span>
               <h3>소마신화전기_가상</h3>
@@ -341,7 +357,9 @@
           </article>
 
           <article class="work">
-            <img class="cover-img" src="images/cover-pacheon-main.png" alt="파천왕전 대표 표지">
+            <a href="#pacheon-list" class="cover-link" aria-label="파천왕전 권별 자료 보기">
+              <img class="cover-img" src="images/cover-pacheon-main.png" alt="파천왕전 대표 표지">
+            </a>
             <div class="work-body">
               <span class="tag">대표 작품</span>
               <h3>파천왕전 — 삼계의 균열</h3>
