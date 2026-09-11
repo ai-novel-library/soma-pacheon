@@ -464,22 +464,10 @@
           홈페이지 버튼을 다시 수정할 필요가 없습니다.
         </p>
 
-        <div class="download-group" id="soma-list">
-          <h3>소마신화전기 — 가상 창작본</h3>
-          <div id="soma-volumes">
-            <p class="empty">
-              공개할 권별 PDF를 업로드한 뒤 목록을 연결하겠습니다.
-            </p>
-          </div>
-        </div>
-
-        <div class="download-group" id="pacheon-list">
-          <h3>파천왕전 — 삼계의 균열</h3>
-          <div class="volume-grid" id="pacheon-volumes"></div>
-          <noscript>
-            <p class="empty">권별 목록을 보려면 JavaScript를 허용해 주세요.</p>
-          </noscript>
-        </div>
+        <div id="download-groups"></div>
+        <noscript>
+          <p class="empty">권별 목록을 보려면 JavaScript를 허용해 주세요.</p>
+        </noscript>
       </section>
 
       <section class="section" id="comments">
@@ -584,155 +572,167 @@
       ============================================================
     */
 
-    const library = {
-      soma: [
-  {
-    title: "제16권",
-    subtitle: "전쟁을 선포한 다음 날",
-    pdf: "books/soma-16.pdf"
-  },
-  {
-    title: "제17권",
-    subtitle: "문 없는 성",
-    pdf: "books/soma-17.pdf"
-  },
-  {
-    title: "제18권",
-    subtitle: "백야령의 약속",
-    pdf: "books/soma-18.pdf"
-  },
-  {
-    title: "제19권",
-    subtitle: "일곱 번째 계단",
-    pdf: "books/soma-19.pdf"
-  },
-  {
-    title: "제20권",
-    subtitle: "울리지 않는 종",
-    pdf: "books/soma-20.pdf"
-  },
-  {
-    title: "제21권",
-    subtitle: "백철곡의 불씨",
-    pdf: "books/soma-21.pdf"
-  },
-  {
-    title: "제22권",
-    subtitle: "돌아오는 계절",
-    pdf: "books/soma-22.pdf"
-  },
-  {
-    title: "제23권",
-    subtitle: "지워진 항구",
-    pdf: "books/soma-23.pdf"
-  },
-  {
-    title: "제24권",
-    subtitle: "검은 돛의 약속",
-    pdf: "books/soma-24.pdf"
-  },
-  {
-    title: "제25권",
-    subtitle: "모래 아래의 이름",
-    pdf: "books/soma-25.pdf"
-  },
-  {
-    title: "제26권",
-    subtitle: "거울 숲의 밤",
-    pdf: "books/soma-26.pdf"
-  },
-  {
-    title: "제27권",
-    subtitle: "하늘을 건너는 배",
-    pdf: "books/soma-27.pdf"
-  },
-  {
-    title: "제28권",
-    subtitle: "왕좌 없는 회의",
-    pdf: "books/soma-28.pdf"
-  },
-  {
-    title: "제29권",
-    subtitle: "마지막 조수",
-    pdf: "books/soma-29.pdf"
-  },
-  {
-    title: "제30권",
-    subtitle: "길 위의 봄",
-    pdf: "books/soma-30.pdf"
-  }
-],
-      pacheon: [
-  {
-    title: "제1권",
-    subtitle: "무너진 다리",
-    pdf: "books/pacheon-01.pdf"
-  },
-  {
-    title: "제2권",
-    subtitle: "장례꾼의 길",
-    pdf: "books/pacheon-02.pdf"
-  },
-  {
-    title: "제3권",
-    subtitle: "왕좌에 앉은 별지기",
-    pdf: "books/pacheon-03.pdf"
-  },
-  {
-    title: "제4권",
-    subtitle: "파천왕",
-    pdf: "books/pacheon-04.pdf"
-  },
-  {
-    title: "제5권",
-    subtitle: "승전의 그림자",
-    pdf: "books/pacheon-05.pdf"
-  },
-  {
-    title: "제6권",
-    subtitle: "돌아오지 못한 사람들",
-    pdf: "books/pacheon-06.pdf"
-  },
-  {
-    title: "제7권",
-    subtitle: "검이 향하는 곳",
-    pdf: "books/pacheon-07.pdf"
-  },
-  {
-    title: "제8권",
-    subtitle: "인간의 깃발",
-    pdf: "books/pacheon-08.pdf"
-  },
-  {
-    title: "제9권",
-    subtitle: "고향을 부르는 독",
-    pdf: "books/pacheon-09.pdf"
-  },
-  {
-    title: "제10권",
-    subtitle: "세 세계의 밤",
-    pdf: "books/pacheon-10.pdf"
-  },
-  {
-    title: "제11권",
-    subtitle: "한 번의 숨",
-    pdf: "books/pacheon-11.pdf"
-  },
-  {
-    title: "제12권",
-    subtitle: "이름을 남기는 사람",
-    pdf: "books/pacheon-12.pdf"
-  }
-]
-    };
+    const workCatalog = [
+      {
+        groupId: "soma-list",
+        containerId: "soma-volumes",
+        workName: "소마신화전기 — 가상 창작본",
+        volumes: [
+          {
+            title: "제16권",
+            subtitle: "전쟁을 선포한 다음 날",
+            pdf: "books/soma-16.pdf"
+          },
+          {
+            title: "제17권",
+            subtitle: "문 없는 성",
+            pdf: "books/soma-17.pdf"
+          },
+          {
+            title: "제18권",
+            subtitle: "백야령의 약속",
+            pdf: "books/soma-18.pdf"
+          },
+          {
+            title: "제19권",
+            subtitle: "일곱 번째 계단",
+            pdf: "books/soma-19.pdf"
+          },
+          {
+            title: "제20권",
+            subtitle: "울리지 않는 종",
+            pdf: "books/soma-20.pdf"
+          },
+          {
+            title: "제21권",
+            subtitle: "백철곡의 불씨",
+            pdf: "books/soma-21.pdf"
+          },
+          {
+            title: "제22권",
+            subtitle: "돌아오는 계절",
+            pdf: "books/soma-22.pdf"
+          },
+          {
+            title: "제23권",
+            subtitle: "지워진 항구",
+            pdf: "books/soma-23.pdf"
+          },
+          {
+            title: "제24권",
+            subtitle: "검은 돛의 약속",
+            pdf: "books/soma-24.pdf"
+          },
+          {
+            title: "제25권",
+            subtitle: "모래 아래의 이름",
+            pdf: "books/soma-25.pdf"
+          },
+          {
+            title: "제26권",
+            subtitle: "거울 숲의 밤",
+            pdf: "books/soma-26.pdf"
+          },
+          {
+            title: "제27권",
+            subtitle: "하늘을 건너는 배",
+            pdf: "books/soma-27.pdf"
+          },
+          {
+            title: "제28권",
+            subtitle: "왕좌 없는 회의",
+            pdf: "books/soma-28.pdf"
+          },
+          {
+            title: "제29권",
+            subtitle: "마지막 조수",
+            pdf: "books/soma-29.pdf"
+          },
+          {
+            title: "제30권",
+            subtitle: "길 위의 봄",
+            pdf: "books/soma-30.pdf"
+          }
+        ]
+      },
+      {
+        groupId: "pacheon-list",
+        containerId: "pacheon-volumes",
+        workName: "파천왕전 — 삼계의 균열",
+        volumes: [
+          {
+            title: "제1권",
+            subtitle: "무너진 다리",
+            pdf: "books/pacheon-01.pdf"
+          },
+          {
+            title: "제2권",
+            subtitle: "장례꾼의 길",
+            pdf: "books/pacheon-02.pdf"
+          },
+          {
+            title: "제3권",
+            subtitle: "왕좌에 앉은 별지기",
+            pdf: "books/pacheon-03.pdf"
+          },
+          {
+            title: "제4권",
+            subtitle: "파천왕",
+            pdf: "books/pacheon-04.pdf"
+          },
+          {
+            title: "제5권",
+            subtitle: "승전의 그림자",
+            pdf: "books/pacheon-05.pdf"
+          },
+          {
+            title: "제6권",
+            subtitle: "돌아오지 못한 사람들",
+            pdf: "books/pacheon-06.pdf"
+          },
+          {
+            title: "제7권",
+            subtitle: "검이 향하는 곳",
+            pdf: "books/pacheon-07.pdf"
+          },
+          {
+            title: "제8권",
+            subtitle: "인간의 깃발",
+            pdf: "books/pacheon-08.pdf"
+          },
+          {
+            title: "제9권",
+            subtitle: "고향을 부르는 독",
+            pdf: "books/pacheon-09.pdf"
+          },
+          {
+            title: "제10권",
+            subtitle: "세 세계의 밤",
+            pdf: "books/pacheon-10.pdf"
+          },
+          {
+            title: "제11권",
+            subtitle: "한 번의 숨",
+            pdf: "books/pacheon-11.pdf"
+          },
+          {
+            title: "제12권",
+            subtitle: "이름을 남기는 사람",
+            pdf: "books/pacheon-12.pdf"
+          }
+        ]
+      }
+    ];
 
     /*
       ============================================================
-      새로운 작품 추가 예시
+      새로운 작품 추가 방법
       ------------------------------------------------------------
-      아래 futureWorks에 새 소설을 추가하면
-      '새로운 AI 창작 소설' 영역을 나중에 자동 생성하도록 확장할 수 있습니다.
-      현재는 준비 중 카드만 표시합니다.
+      아래 futureWorks에 새 소설 정보를 추가하면
+      '새로운 AI 창작 소설' 영역에 카드가 자동으로 생성됩니다.
+    
+      cover에 표지 이미지 경로를 입력하면 표지가 표시되고,
+      href에 링크를 입력하면 '작품 보기' 버튼이 표시됩니다.
       ============================================================
     */
     const futureWorks = [
@@ -756,45 +756,45 @@
       }
     ];
     
-function renderFutureWorks() {
-  const container = document.getElementById("future-works");
-  if (!container) return;
+    function renderFutureWorks() {
+      const container = document.getElementById("future-works");
+      if (!container) return;
 
-  container.replaceChildren();
+      container.replaceChildren();
 
-  for (const work of futureWorks) {
-    const card = document.createElement("article");
-    card.className = "future-card";
+      for (const work of futureWorks) {
+        const card = document.createElement("article");
+        card.className = "future-card";
 
-    if (work.cover) {
-      const image = document.createElement("img");
-      image.className = "future-cover";
-      image.src = work.cover;
-      image.alt = `${work.title} 대표 표지`;
-      card.append(image);
+        if (work.cover) {
+          const image = document.createElement("img");
+          image.className = "future-cover";
+          image.src = work.cover;
+          image.alt = `${work.title} 대표 표지`;
+          card.append(image);
+        }
+
+        const title = document.createElement("strong");
+        title.textContent = work.title;
+
+        const status = document.createElement("span");
+        status.textContent = work.status;
+
+        card.append(title, status);
+
+        if (work.href) {
+          const link = document.createElement("a");
+          link.className = "btn future-link";
+          link.href = work.href;
+          link.textContent = "작품 보기";
+          card.append(link);
+        }
+
+        container.append(card);
+      }
     }
 
-    const title = document.createElement("strong");
-    title.textContent = work.title;
-
-    const status = document.createElement("span");
-    status.textContent = work.status;
-
-    card.append(title, status);
-
-    if (work.href) {
-      const link = document.createElement("a");
-      link.className = "btn future-link";
-      link.href = work.href;
-      link.textContent = "작품 보기";
-      card.append(link);
-    }
-
-    container.append(card);
-  }
-}
-
-renderFutureWorks();
+    renderFutureWorks();
     function renderVolumes(elementId, volumes, workName) {
       const container = document.getElementById(elementId);
       if (!container) return;
@@ -855,19 +855,31 @@ renderFutureWorks();
         container.append(card);
       }
     }
-    const workCatalog = [
-      {
-        containerId: "soma-volumes",
-        volumes: library.soma,
-        workName: "소마신화전기 — 가상 창작본"
-      },
-      {
-        containerId: "pacheon-volumes",
-        volumes: library.pacheon,
-        workName: "파천왕전"
-      }
-    ];
+        
+    function renderDownloadGroups() {
+      const container = document.getElementById("download-groups");
+      if (!container) return;
+      
+      container.replaceChildren();
+      
+      for (const work of workCatalog) {
+        const group = document.createElement("div");
+        group.className = "download-group";
+        group.id = work.groupId;
 
+        const heading = document.createElement("h3");
+        heading.textContent = work.workName;
+
+        const volumes = document.createElement("div");
+        volumes.id = work.containerId;
+
+        group.append(heading, volumes);
+        container.append(group);
+      }
+    }
+
+    renderDownloadGroups();
+    
     for (const work of workCatalog) {
       renderVolumes(
         work.containerId,
@@ -875,6 +887,7 @@ renderFutureWorks();
         work.workName
       );
     }
+    
     const connectedCount =
       workCatalog
         .flatMap(work => work.volumes)
