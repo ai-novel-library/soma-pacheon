@@ -742,6 +742,29 @@
       '작품 보기' 버튼은 groupId를 이용해 권별 목록으로 자동 연결됩니다.
       ============================================================
     */
+
+    workCatalog.push({
+      groupId: "tomorrow-list",
+      containerId: "tomorrow-volumes",
+      workName: "내일은 정상입니다.",
+      isNew: true,
+      status: "전 3권 · 삽화 수록본",
+      volumes: [
+        {
+          title: "제1권",
+          pdf: "books/tomorrow-01.pdf"
+        },
+        {
+          title: "제2권",
+          pdf: "books/tomorrow-02.pdf"
+        },
+        {
+          title: "제3권",
+          pdf: "books/tomorrow-03.pdf"
+        }
+      ]
+    });
+    
     const futureWorks = workCatalog.filter(work => work.isNew);
     
     function renderFutureWorks() {
